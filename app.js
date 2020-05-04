@@ -104,9 +104,10 @@ todoForm.addEventListener("submit", function (event) {
     // Add new todoText to todos array, clear the input
     todos.push(todoText);
     todoInput.value = "";
-
+    localStorage.setItem("submit", todos);
     // Re-render the list
     renderTodos();
+
 });
 
 // When a element inside of the todoList is clicked...
