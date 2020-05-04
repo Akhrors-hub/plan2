@@ -26,7 +26,13 @@ switch (new Date().getDay()) {
     case 6:
         day = "Saturday";
 }
+
 document.getElementById("demo").innerHTML = "Today is " + day;
+
+
+
+
+
 
 
 var todoInput = document.querySelector("#todo-text");
@@ -42,10 +48,19 @@ function renderTodos() {
     // Clear todoList element and update todoCountSpan
     todoList.innerHTML = "";
     todoCountSpan.textContent = todos.length;
+    var time = moment().format("HH");
+
 
     // Render a new li for each todo
-    for (var i = 0; i < todos.length; i++) {
+    for (var i = 0; i < 24; i++) {
         var todo = todos[i];
+
+
+
+
+
+
+
 
         var li = document.createElement("li");
         li.textContent = todo;
@@ -58,9 +73,22 @@ function renderTodos() {
 
         li.appendChild(button);
         todoList.appendChild(li);
+
+
+
+
+
+    }
+    if (i < time) {
+        $(`#${i}`).attr("style", "background-color:  #d3d3d3; color: white;");
+    } else if (i > time) {
+        $(`#${i}`).attr("style", "background-color:  green; color: white;");
+    } else {
+        $(`#${i}`).attr("style", "background-color:  red; color: white;");
     }
 
 }
+
 
 // When form is submitted...
 todoForm.addEventListener("submit", function (event) {
